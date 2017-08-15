@@ -38,6 +38,7 @@ function getQuery() {
 
 getQuery();
 
+
 function parseDates(resultJSON) {
 
 
@@ -56,9 +57,9 @@ function parseDates(resultJSON) {
 }
 
 
-
 app.get("/try", function(req, res) {
-    res.render('index')
+
+    res.render('index', data)
 })
 
 var port = 3000;
