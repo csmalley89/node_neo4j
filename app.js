@@ -29,14 +29,13 @@ function getQuery() {
             session.close();
             var resultJSON = JSON.stringify(result.records)
             parseDates(resultJSON)
+            return resultJSON;
         })
         .catch(error => {
             session.close();
             throw error;
         });
 }
-
-getQuery();
 
 
 function parseDates(resultJSON) {
@@ -56,10 +55,17 @@ function parseDates(resultJSON) {
     console.log(count)
 }
 
+app.get("/", function(req, res) {
+    res.render('index')
+})
+
+
 
 app.get("/try", function(req, res) {
 
-    res.render('index', data)
+    getQuery()
+        .then(result => res.json(result))
+        .catch(err => next(new Error(err)))
 })
 
 var port = 3000;
