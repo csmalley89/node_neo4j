@@ -42,7 +42,6 @@ function parseDates(resultJSON) {
 
 
     var items = JSON.parse(resultJSON)
-    console.log(items)
 
     var count
 
@@ -50,9 +49,6 @@ function parseDates(resultJSON) {
         count = 0
         count++
     }
-
-
-    console.log(count)
 }
 
 app.get("/", function(req, res) {
@@ -61,7 +57,7 @@ app.get("/", function(req, res) {
 
 
 
-app.get("/try", function(req, res) {
+app.get("/events", function(req, res) {
 
     getQuery()
         .then(result => res.json(result))
@@ -71,5 +67,5 @@ app.get("/try", function(req, res) {
 var port = 3000;
 
 app.listen(port, function() {
-    console.log("Trying out stuff at " + port)
+    console.log("Serving up data at " + port)
 })
